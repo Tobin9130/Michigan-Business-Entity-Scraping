@@ -71,14 +71,8 @@ for page in range(800000000,900000000):
     page_ID = pageCompare(page)
     
     if page_ID is not None:
-            #page_IDs = [x for x in good_IDs if x is not None] # dont' like this it is HACKY
         
         foo = page_parse(page_ID)
-        
-        #output = {}
-    
-        #for k in foo[0].keys():
-         #   output[k] = [x[k] for x in foo]
         
         df = pd.DataFrame(foo, index = [foo['MainContent_lblIDNumberHeader']])
     
