@@ -1,15 +1,27 @@
-# Production Script
+###                     ###
+###                     ###
+###   Lara business     ###
+###      scrape         ###
+###                     ###
+###                     ###
 
-import requests, os
+# By Sean Tobin, MPP. 
+
+# This is meant to replicate the public information as supplied by Michigan's Licensing and Regulatory Agency. Load it into a database 
+# and have fun. I'm building a longitudinal spatial model.
+
+#There is no warranty with this script.
+
+import requests, os, time
 from bs4 import BeautifulSoup as bs
 
 import pandas as pd
 
-#os.chdir() ## Make sure to enter the directory you want the program to populate the csv in
+os.chdir('C:\\Users\\Sean\\Desktop\\Forecasting')
 
 def pageCompare(ID):
-    # Goal here is to plug this function into a loop for the range to copy records of all businesses 
-    # available through the business entity search portal.
+    # Goal here is to plug this function into a loop for the range described above to copy records of all businesses 
+    # available through this portal.
     
     baseLink = 'https://cofs.lara.state.mi.us/CorpWeb/CorpSearch/CorpSummary.aspx?ID='
     
@@ -63,7 +75,6 @@ Column_IDs = [
 ]
 
 # Ok here is the meat and potatoes
-# Little bit of sampling done by me suggests that all IDs are in this 8mil to 9mil range. 
 
 blank_df = pd.DataFrame([],columns = Column_IDs).to_csv('Lara_records_2.csv')
 
@@ -75,6 +86,9 @@ for page in range(800000000,900000000):
         foo = page_parse(page_ID)
         
         df = pd.DataFrame(foo, index = [foo['MainContent_lblIDNumberHeader']])
-    
+        
         with open('Lara_records_2.csv', 'a') as f:
             df.to_csv(f, header=False)
+        
+    time.sleep(1) # Added cause manners count
+    
