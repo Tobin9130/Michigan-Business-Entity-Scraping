@@ -7,10 +7,8 @@
 
 # By Sean Tobin, MPP. 
 
-# This is meant to replicate the public information as supplied by Michigan's Licensing and Regulatory Agency. Load it into a database 
-# and have fun. I'm building a longitudinal spatial model.
-
-#There is no warranty with this script.
+# This is meant to replicate the public information as supplied by the Michigan Department of Licensing and Regulatory Affairs. 
+#Load it into a database and have fun. I'm building a longitudinal spatial model. There is no warranty with this script. 
 
 import requests, os, time
 from bs4 import BeautifulSoup as bs
