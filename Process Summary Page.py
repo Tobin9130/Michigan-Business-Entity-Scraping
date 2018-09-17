@@ -17,7 +17,8 @@ from bs4 import BeautifulSoup as bs
 
 import pandas as pd
 
-os.chdir('C:\\Users\\Sean\\Desktop\\Forecasting')
+#Add your own Dir here
+#os.chdir('')
 
 def pageCompare(ID):
     # Goal here is to plug this function into a loop for the range described above to copy records of all businesses 
