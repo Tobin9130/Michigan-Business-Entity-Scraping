@@ -150,7 +150,5 @@ for page in range(800000000,900000000):
         
         with open('Lara_records_Ordered.csv', 'a') as f:
             df.to_csv(f, header=False)
-        time.sleep(.25) # Added cause manners count
-        
-    time.sleep(1) # Added cause manners count
-    
+        #time.sleep(.25) # Added cause manners count
+        # Manners would mean this takes a month to run...hmmm
