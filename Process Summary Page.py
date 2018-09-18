@@ -75,7 +75,7 @@ Column_IDs = [
 
 # Ok here is the meat and potatoes
 
-blank_df = pd.DataFrame([],columns = Column_IDs).to_csv('Lara_records_2.csv')
+blank_df = pd.DataFrame([],columns = Column_IDs).to_csv('Lara_records_Ordered.csv')
 
 for page in range(800000000,900000000):
     page_ID = pageCompare(page)
@@ -84,10 +84,12 @@ for page in range(800000000,900000000):
         
         foo = page_parse(page_ID)
         
-        df = pd.DataFrame(foo, index = [foo['MainContent_lblIDNumberHeader']])
-        
-        with open('Lara_records_2.csv', 'a') as f:
+        df = pd.DataFrame(foo, index = [foo['MainContent_lblIDNumberHeader']],columns = Column_IDs) 
+        # Without specifying the column, header does not match the data.
+        with open('Lara_records_Ordered.csv', 'a') as f:
             df.to_csv(f, header=False)
+        
+    time.sleep(1) # Added cause manners count
         
     time.sleep(1) # Added cause manners count
     
